@@ -103,6 +103,7 @@ func ExampleAddBonus_limit() {
 }
 
 func ExampleTotal() {
+	// For Commit
 	cards := []types.Card{
 		{
 			Balance: 10_000_00,
