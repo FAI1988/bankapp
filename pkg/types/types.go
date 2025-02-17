@@ -1,9 +1,9 @@
 package types
 
-// Money provides a monetary amount in minimal units (cents, kopecks, dirams, etc.)
+// / Money provides a monetary amount in minimal units (cents, kopecks, dirams, etc.)
 type Money int64
 
-// Currency represents currency code
+// / Currency represents currency code
 type Currency string
 
 // Currencies codes
@@ -13,10 +13,10 @@ const (
 	USD Currency = "USD"
 )
 
-// PAN represents card number
+// / PAN represents card number
 type PAN string
 
-// Card represents information about a payment card
+// / Card represents information about a payment card
 type Card struct {
 	ID         int
 	PAN        PAN
@@ -28,7 +28,7 @@ type Card struct {
 	MinBalance Money // Минимальный остаток на карте за месяц
 }
 
-// Payment представляет информацию о платеже.
+// / Payment представляет информацию о платеже.
 type Payment struct {
 	ID     int
 	Amount Money
