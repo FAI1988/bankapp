@@ -172,3 +172,37 @@ func ExampleTotal_inactive() {
 	fmt.Println(Total(cards))
 	// Output: 1000000
 }
+
+func ExamplePaymentSource() {
+	cards := []types.Card{{PAN: "5058 **** **** 0001", Balance: 1_000_00, Active: true}, {PAN: "5058 **** **** 0002", Balance: 2_000_00, Active: true}}
+
+	sources := PaymentSource(cards)
+	for _, source := range sources {
+		fmt.Println(source.Number)
+	}
+	// Output:
+	// 5058 **** **** 0001
+	// 5058 **** **** 0002
+}
+
+func ExamplePaymentSource_negative() {
+	cards := []types.Card{{PAN: "5058 **** **** 0003", Balance: -1_000_00, Active: true}, {PAN: "5058 **** **** 0004", Balance: 2_000_00, Active: true}}
+
+	sources := PaymentSource(cards)
+	for _, source := range sources {
+		fmt.Println(source.Number)
+	}
+	// Output:
+	// 5058 **** **** 0004
+}
+
+func ExamplePaymentSource_inactive() {
+	cards := []types.Card{{PAN: "5058 **** **** 0005", Balance: 1_000_00, Active: false}, {PAN: "5058 **** **** 0006", Balance: 2_000_00, Active: true}}
+
+	sources := PaymentSource(cards)
+	for _, source := range sources {
+		fmt.Println(source.Number)
+	}
+	// Output:
+	// 5058 **** **** 0006
+}
